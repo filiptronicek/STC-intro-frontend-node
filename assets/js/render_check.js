@@ -4,7 +4,7 @@ const countdownDiv = document.getElementById("countdown");
 
 const filelink = `https://github.com/filiptronicek/STC-intro/raw/master/render/${name}.mp4`;
 
-const time = 71;
+const time = 131;
 let timeleft = time;
 
 function UrlExists(url)
