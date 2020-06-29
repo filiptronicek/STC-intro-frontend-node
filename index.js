@@ -20,13 +20,14 @@ app.get("/", function (req, res) {
 
 app.post("/api", (req, res) => {
   if (req.body.name) {
-    const vidName = "Test služby";
+    const vidName = "Node Test";
+    const desc = "Testing the thing";
     const body = {
       event_type: "trigger",
-      client_payload: { name: vidName, id: Base64.encode(vidName) },
+      client_payload: { name: vidName, desc: desc },
     };
 
-    fetch("ttps://api.github.com/repos/filiptronicek/STC-Intro/dispatches", {
+    fetch("https://api.github.com/repos/filiptronicek/STC-Intro/dispatches", {
       method: "post",
       body: JSON.stringify(body),
       headers: {
@@ -34,9 +35,7 @@ app.post("/api", (req, res) => {
         Authorization: "token "+token,
       },
     })
-      .then((result) => result.json())
-      .then((json) => res.json(json))
-      .catch(() => console.log("Success"))
+      .catch(err => console.log(err))
       .then(res.send("Success"));
   }
 });
