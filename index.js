@@ -20,8 +20,8 @@ app.get("/", function (req, res) {
 
 app.post("/api", (req, res) => {
   if (req.body.name) {
-    const vidName = "Node Test";
-    const desc = "Testing the thing";
+    const vidName = req.body.name;
+    const desc = req.body.desc;
     const body = {
       event_type: "trigger",
       client_payload: { name: vidName, desc: desc },

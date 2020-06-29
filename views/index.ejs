@@ -7,13 +7,17 @@
     <link rel="stylesheet" href="https://unpkg.com/mvp.css">
 </head>
 <header>
-    Video title
+   <h1>Azure Intro generator</h1>
 </header>
 <body>
     <main>
         <form action="/api" method="POST">
+            <label for="name">Name</label>
             <input type="text" name="name" style="width: 95%;">
-            </form>
+            <label for="desc">Description</label>
+            <input type="text" name="desc" style="width: 95%;">
+            <input type="submit" value="Generate">
+        </form>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/js-base64@2.5.2/base64.min.js"></script>
 </body>
