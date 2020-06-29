@@ -27,7 +27,7 @@ app.post("/api", (req, res) => {
       client_payload: { name: vidName, desc: desc },
     };
 
-    fetch("https://api.github.com/repos/filiptronicek/STC-Intro/dispatches", {
+    fetch("https://api.gifthub.com/repos/filiptronicek/STC-Intro/dispatches", {
       method: "post",
       body: JSON.stringify(body),
       headers: {
@@ -36,7 +36,7 @@ app.post("/api", (req, res) => {
       },
     })
       .catch(err => console.log(err))
-      .then(res.send("Success"));
+      .then(res.render("api.ejs", {name: vidName}));
   }
 });
 
