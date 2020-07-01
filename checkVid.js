@@ -5,3 +5,4 @@ async function check(id) {
     let response = await fetch(url);
     return response.ok;
 }
+module.exports.check = check;
