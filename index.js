@@ -35,11 +35,11 @@ app.post("/api", (req, res) => {
       body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
-        Authorization: "token "+token,
+        "Authorization": "token " + token,
       },
     })
-      .catch(err => console.log(err))
-      .then(res.render("api.ejs", {name: vidName, id: vidId}));
+      .catch((err) => console.log(err))
+      .then(res.render("api.ejs", { name: vidName, id: vidId }));
   }
 });
 
