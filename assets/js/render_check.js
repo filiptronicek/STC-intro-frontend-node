@@ -1,6 +1,9 @@
 const displaySeconds = document.getElementById("secs");
 const linkDiv = document.getElementById("link");
 const countdownDiv = document.getElementById("countdown");
+const videoDiv = document.getElementById("videoEl");
+
+videoDiv.style.display = "none";
 
 const filelink = `https://github.com/filiptronicek/STC-intro/raw/master/render/${name}.mp4`;
 
@@ -11,12 +14,15 @@ function UrlExists(url) {
   const http = new XMLHttpRequest();
   http.open("HEAD", url, false);
   http.send();
-  //return http.status!=404;
-  return true;
+  return http.status!=404;
 }
 
 function checkForFile() {
-  if (!UrlExists("https://cors-anywhere.herokuapp.com/" + filelink)) {
+  if (UrlExists("https://cors-anywhere.herokuapp.com/" + filelink)) {
+    videoDiv.src = filelink;
+    videoDiv.style.display = "block";
+  }
+  if(false) {
     timeleft = 10;
   } else {
     clearInterval(timeInterval);
