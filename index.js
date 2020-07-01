@@ -2,6 +2,8 @@ const express = require("express");
 const fetch = require("node-fetch");
 const base64 = require("nodejs-base64").base64encode;
 
+const check = require("./checkVid").check;
+
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -29,17 +31,20 @@ app.post("/api", (req, res) => {
       event_type: "trigger",
       client_payload: { name: vidName, desc: desc, id: vidId },
     };
-
-    fetch("https://api.github.com/repos/filiptronicek/STC-Intro/dispatches", {
-      method: "post",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "token " + token,
-      },
-    })
-      .catch((err) => console.log(err))
-      .then(res.render("api.ejs", { name: vidName, id: vidId }));
+    if (!check(vidId)) {
+      fetch("https://api.github.com/repos/filiptronicek/STC-Intro/dispatches", {
+        method: "post",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "token " + token,
+        },
+      })
+        .catch((err) => console.log(err))
+        .then(res.render("api.ejs", { name: vidName, id: vidId }));
+    }
+  } else {
+    res.render("api.ejs", { name: vidName, id: vidId });
   }
 });
 
