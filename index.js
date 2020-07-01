@@ -1,8 +1,8 @@
-const port = process.env.PORT || 5000;
-
 const express = require("express");
 const fetch = require("node-fetch");
-const Base64 = require("js-base64").Base64;
+const base64 = require("nodejs-base64").base64encode;
+
+const port = process.env.PORT || 5000;
 
 const app = express();
 
@@ -22,9 +22,12 @@ app.post("/api", (req, res) => {
   if (req.body.name) {
     const vidName = req.body.name;
     const desc = req.body.desc;
+
+    const vidId = base64(`${vidName}.${desc}`);
+
     const body = {
       event_type: "trigger",
-      client_payload: { name: vidName, desc: desc },
+      client_payload: { name: vidName, desc: desc, id: vidId },
     };
 
     fetch("https://api.github.com/repos/filiptronicek/STC-Intro/dispatches", {
@@ -36,7 +39,7 @@ app.post("/api", (req, res) => {
       },
     })
       .catch(err => console.log(err))
-      .then(res.render("api.ejs", {name: vidName}));
+      .then(res.render("api.ejs", {name: vidName, id: vidId}));
   }
 });
 
