@@ -14,20 +14,19 @@ function UrlExists(url) {
   const http = new XMLHttpRequest();
   http.open("HEAD", url, false);
   http.send();
-  return http.status!=404;
+  return http.status != 404;
 }
 
 function checkForFile() {
   if (UrlExists("https://cors-anywhere.herokuapp.com/" + filelink)) {
     videoDiv.src = filelink;
     videoDiv.style.display = "block";
-  }
-  if(false) {
-    timeleft = 10;
-  } else {
+    clearInterval(checkInterval);
     clearInterval(timeInterval);
     linkDiv.innerHTML = `Link: <a href="${filelink}" download>Download</a>`;
     countdownDiv.style.display = "none";
+  } else {
+    timeleft = 10;
   }
 }
 
@@ -40,7 +39,14 @@ function countDown() {
     displaySeconds.innerText = timeleft.toString();
     displaySeconds.innerText += timeleft === 1 ? " second" : " seconds";
   }
+  if (timeleft === time - 2) {
+    checkForFile();
+  }
 }
 
+/* Starting function */
+
 countDown();
+
 const timeInterval = setInterval(countDown, 1000);
+const checkInterval = setInterval(checkForFile, 5000);
