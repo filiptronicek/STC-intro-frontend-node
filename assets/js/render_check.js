@@ -39,7 +39,7 @@ function countDown() {
     displaySeconds.innerText = timeleft.toString();
     displaySeconds.innerText += timeleft === 1 ? " second" : " seconds";
   }
-  if(timeleft === time - 2) {
+  if (timeleft === time - 2) {
     checkForFile();
   }
 }
