@@ -5,7 +5,8 @@ const videoDiv = document.getElementById("videoEl");
 
 videoDiv.style.display = "none";
 
-const filelink = `https://github.com/filiptronicek/STC-intro/raw/master/render/${name}.mp4`;
+const filelink =
+    `https://github.com/filiptronicek/STC-intro/raw/master/render/${name}.mp4`;
 
 const time = 131;
 let timeleft = time;
@@ -39,7 +40,7 @@ function countDown() {
     displaySeconds.innerText = timeleft.toString();
     displaySeconds.innerText += timeleft === 1 ? " second" : " seconds";
   }
-  if(timeleft === time - 2) {
+  if (timeleft === time - 2) {
     checkForFile();
   }
 }
