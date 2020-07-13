@@ -25,8 +25,6 @@ function checkForFile () {
     clearInterval(timeInterval);
     linkDiv.innerHTML = `Link: <a href="${filelink}" download>Download</a>`;
     countdownDiv.style.display = 'none';
-  } else {
-    timeleft = 10;
   }
 }
 
