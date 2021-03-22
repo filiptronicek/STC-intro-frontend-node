@@ -6,7 +6,7 @@ const base64 = require('nodejs-base64').base64encode;
 
 const port = process.env.PORT || 5000;
 
-const app = express()
+const app = express();
 
 const token = process.env.API_key || require('./creds').token;
 
@@ -18,7 +18,7 @@ app.use(express.static('assets'));
 
 app.get('/', function (req, res) {
   res.render('index');
-})
+});
 
 app.post('/api', (req, res) => {
   if (req.body.name) {
@@ -30,7 +30,7 @@ app.post('/api', (req, res) => {
     const body = {
       event_type: 'trigger',
       client_payload: { name: vidName, desc: desc, id: vidId }
-    }
+    };
     // if (!check(vidId)) {
     fetch('https://api.github.com/repos/filiptronicek/STC-Intro/dispatches', {
       method: 'post',
@@ -41,15 +41,10 @@ app.post('/api', (req, res) => {
       }
     })
       .catch((err) => console.log(err))
-      .then(res.render('api.ejs', { name: vidName, id: vidId }))
+      .then(res.render('api.ejs', { name: vidName, id: vidId }));
   }
-  /*
-  } else {
-    res.render("api.ejs", { name: vidName, id: vidId });
-  }
-    */
-})
+});
 
 app.listen(port, function () {
   console.log(`Editor listening on port ${port}!`);
-})
+});
