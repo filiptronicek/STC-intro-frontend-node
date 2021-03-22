@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('views'));
 app.use(express.static('assets'));
 
-app.get('/', function (req, res) {
+app.get('/', (_req, res) => {
   res.render('index');
 });
 
@@ -45,6 +45,6 @@ app.post('/api', (req, res) => {
   }
 });
 
-app.listen(port, function () {
+app.listen(port, () => {
   console.log(`Editor listening on port ${port}!`);
 });
