@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Result</title>
-    <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
-  </head>
-  <body>
-    <main>
-      <h1>Video: <%- name %></h1>
-      <br />
-      <div id="countdown">Will be availible in <span id="secs"></span></div>
-      <br />
-      <span id="link"></span>
-      <br />
-      <video id="videoEl" src="" width="50%" controls></video>
-    </main>
-  </body>
-  <script>
-    name = "<%- id %>";
-  </script>
-  <script src="/js/render_check.js"></script>
-  <noscript>
-    Sorry bud, but this won't work without JavaScript enabled.
-  </noscript>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Result</title>
+  <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
+</head>
+
+<body>
+  <main>
+    <h1>Video: <%- name %>
+    </h1>
+    <br />
+    <div id="countdown">Will be availible in <span id="secs"></span></div>
+    <br />
+    <span id="link"></span>
+    <br />
+    <video id="videoEl" src="" width="50%" controls></video>
+  </main>
+</body>
+<script>
+  name = "<%- id %>";
+</script>
+<script src="/js/render_check.js"></script>
+<noscript>
+  Sorry bud, but this won't work without JavaScript enabled.
+</noscript>
+
 </html>
