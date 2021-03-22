@@ -10,7 +10,7 @@ const filelink = `https://github.com/filiptronicek/STC-intro/raw/master/render/$
 const time = 131;
 let timeleft = time;
 
-function UrlExists (url) {
+function urlExists (url) {
   const http = new XMLHttpRequest();
   http.open('HEAD', url, false);
   http.send();
@@ -18,7 +18,7 @@ function UrlExists (url) {
 }
 
 function checkForFile () {
-  if (UrlExists('https://cors-anywhere.herokuapp.com/' + filelink)) {
+  if (urlExists('https://cors-anywhere.herokuapp.com/' + filelink)) {
     videoDiv.src = filelink;
     videoDiv.style.display = 'block';
     clearInterval(checkInterval);
